@@ -5,7 +5,7 @@ import joblib
 
 app = FastAPI()
 
-model = joblib.load("model.pkl")
+model = joblib.load("model_1.pkl")
 
 class Input(BaseModel):
     features: list[float]
