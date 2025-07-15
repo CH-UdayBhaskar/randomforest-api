@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.responses import RedirectResponse
 import numpy as np
 import joblib
 import uvicorn
@@ -18,10 +19,10 @@ def predict(input: Input):
     prediction = model.predict(data)
     return {"prediction": int(prediction[0])}
 
-@app.get("/")
-def home():
-    return {"message": "Welcome to RandomForest API! Visit /docs"}
 
+@app.get("/")
+def root():
+    return RedirectResponse(url="/docs")
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run("app:app", host="0.0.0.0", port=port)
