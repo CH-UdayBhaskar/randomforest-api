@@ -6,6 +6,7 @@ import numpy as np
 import joblib
 import uvicorn
 import os
+import pandas as pd
 
 app = FastAPI()
 
