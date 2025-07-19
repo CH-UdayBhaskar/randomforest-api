@@ -1,4 +1,4 @@
-fastapi
+jinja2
 uvicorn
 scikit-learn==1.4.2
 joblib
