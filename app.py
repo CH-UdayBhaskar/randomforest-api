@@ -1,14 +1,27 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict
 import numpy as np
 import joblib
 import uvicorn
 import os
-import pandas as pd
+from chatbot import router as chatbot_router
+
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For now, allow all origins (adjust for security)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include chatbot router
+app.include_router(chatbot_router)
 
 model = joblib.load("model.pkl")
 
