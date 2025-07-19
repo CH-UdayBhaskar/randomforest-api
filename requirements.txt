@@ -3,3 +3,6 @@ uvicorn
 scikit-learn==1.4.2
 joblib
 numpy
+fastapi
+uvicorn
+openai
