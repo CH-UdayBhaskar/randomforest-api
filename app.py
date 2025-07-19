@@ -11,6 +11,9 @@ from chatbot import router as chatbot_router
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.requests import Request
+from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.responses import HTMLResponse
+
 
 
 
@@ -65,9 +68,12 @@ def predict(input: Input):
 
 
 
-@app.get("/")
-def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+@app.get("/", include_in_schema=False)
+async def custom_swagger_ui_html():
+    with open("static/swagger.html", "r") as f:
+        html_content = f.read()
+    return HTMLResponse(content=html_content, status_code=200)
+
 
 # @app.get("/")
 # def root():

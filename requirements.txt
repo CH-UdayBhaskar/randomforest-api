@@ -9,3 +9,4 @@ openai
 pandas
 streamlit
 streamlit-chat
+aiofiles
