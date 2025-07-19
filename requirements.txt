@@ -7,3 +7,5 @@ fastapi
 uvicorn
 openai
 pandas
+streamlit
+streamlit-chat
