@@ -24,6 +24,6 @@ async def chat(request: ChatRequest):
                 {"role": "user", "content": request.message}
             ]
         )
-        return {"response": response['choices'][0]['message']['content']}
+        return {"response": response.choices[0].message.content}
     except Exception as e:
         return {"error": str(e)}
